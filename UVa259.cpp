@@ -19,7 +19,6 @@ int greedy(){
     }
     return a;
 }
-
 bool Aug(int i){
     if(!vapp[i]){
         vapp[i]=1;
@@ -52,7 +51,6 @@ inline bool Input(){
     mapp.assign(adj.size(),-1);
     return true;
 }
-
 int main(){
     while(Input()){
         if(ok==false) {printf("!\n");continue;}
@@ -69,4 +67,3 @@ int main(){
         }
     }
 }
-
