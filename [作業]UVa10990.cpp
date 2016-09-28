@@ -1,6 +1,12 @@
 #include <iostream>
 #include <vector>
 #define MAXN 2000001
+//Tons of DP
+//Tons of DP
+//Tons of DP
+//Tons of DP
+//Tons of DP
+//Tons of DP
 using namespace std;
 int phif[MAXN]={0},sum[MAXN]={0},pd[MAXN]={0};
 int phi(int n){
