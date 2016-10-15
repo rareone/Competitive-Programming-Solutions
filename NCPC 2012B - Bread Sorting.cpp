@@ -2,10 +2,10 @@
 #define MAXN  100010
 int A[MAXN],B[MAXN],S[MAXN];
 
-
-
 //小心溢位，之前因為這樣錯死
 //用mergesort找出有幾個inversion
+//奇數偶數互不可交換
+//前一題水所以沒放
 
 long long int countinversion(int *A,int begin,int end){//A[begin,end)
     if(begin+1==end)return 0;
