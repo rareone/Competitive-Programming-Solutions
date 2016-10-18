@@ -6,6 +6,8 @@ using namespace std;
 typedef long long int lli;
 typedef unsigned int ui;
 
+
+//處理大數運算，因為題目要求相乘10^12的數字相乘
 lli mul(lli a,lli b,lli mod){
     if((a<1000000 && b<10000000)||a==1||b==1)return a*b%mod;
     ui A[13];for(int i=0;i<13;++i){A[i]=a%10;a/=10;}
