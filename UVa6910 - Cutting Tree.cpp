@@ -65,6 +65,8 @@ int main(){
             }
             else p=getN()-1,st.push(ii(p,q));
         }
+        //之前假設每個cut都只會有一次而撰code -> WA
+        //利用visited使得cut只會有一次 -> AC
         for(int i=0;i<N;++i) P[i]=i,R[i]=0;
         for(int i=0;i<N;++i) if(pa[i]!=-1) UN(pa[i],i);
         while(!st.empty()){
