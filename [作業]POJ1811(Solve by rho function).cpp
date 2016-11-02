@@ -40,7 +40,7 @@ ll ab(ll p){
     if (p>0)return p;
     else return -p;
 }
-ll rho(ll C){//就有些要求來說，rho太慢了
+ll rho(ll C){//就有些要求來說，rho太慢了，O(n^1/4)
     const ll r=rand()%(C-1);
     ll d=1,p1=2,p2=2;
     while (d!=C) {
