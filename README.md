@@ -22,45 +22,45 @@
 		<td>POJ 1273 
 		<td>POJ 2728 
 	<thead>
-		<td>2 
+		<th>2 
 		<td>UVa 11858 
 		<td>POJ 2420 
 		<td>UVa 11526 
 		<td>POJ 2391 
 		<td>POJ 3259 
 	<thead>
-		<td>3 
+		<th>3 
 		<td>POJ 1195 
 		<td>POJ 3348 
 		<td>CF 615D 
 		<td>UVa 1660 
 		<td>UVa 11419 
 	<thead>
-		<td>4 
+		<th>4 
 		<td>CF 620E 
 		<td>POJ 2187 
 		<td>UVa 10990 
 		<td>POJ 2987 
 		<td>POJ 3013 
 	<thead>
-		<td>5 
+		<th>5 
 		<td>CF 617E 
 		<td>POJ 1687 
 		<td>POJ 2417 
 		<td>ASC 1B 
 		<td>POJ 1548 
 	<thead>
-		<td>6 
+		<th>6 
 		<td>SPOJ 375 
 		<td>POJ 3525 
 		<td>POJ 1811 
 		<td>POJ 2135 
 		<td>POJ 2296 
 	<thead>
-		<td>7 
+		<th>7 
 		<td>CF 342E 
 		<td>POJ 3968 
-		<td>N N 
+		<td>NaN
 		<td>POJ 2195 
 		<td>CF 609E 
 
