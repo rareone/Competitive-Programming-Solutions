@@ -55,7 +55,6 @@ int main(){
             M[i][n+j]=(edge(G[i][0],G[i][1],H[j][0],H[j][1],sp,v))?rand()%(p-1)+1:0;
             M[n+j][i]=(p-M[i][n+j])%p;
         }
-        ll r=GE(n+m);
-        cout<<n-r/2<<'\n';
+        cout<<n-GE(n+m)/2<<'\n';
     }
 }
