@@ -1,3 +1,4 @@
+
 # Competitive-Programming-Solutions
 - It is just a place for my solution on several OJs
 - My TopCoder & Codeforces Account: rareone0602
@@ -17,7 +18,7 @@
   <thead>
     <th>1
 		<td>POJ 3228 
-		<td>POJ 2780 
+		<td><s>POJ 2780</s> 
 		<td>POJ 2480 
 		<td>POJ 1273 
 		<td>POJ 2728 
@@ -25,21 +26,21 @@
 		<th>2 
 		<td>UVa 11858 
 		<td>POJ 2420 
-		<td>UVa 11526 
+		<td><s>UVa 11526</s> 
 		<td>POJ 2391 
 		<td>POJ 3259 
 	<thead>
 		<th>3 
 		<td>POJ 1195 
-		<td>POJ 3348 
-		<td>CF 615D 
+		<td><s>POJ 3348</s> 
+		<td><s>CF 615D</s>
 		<td>UVa 1660 
 		<td>UVa 11419 
 	<thead>
 		<th>4 
-		<td>CF 620E 
+		<td><s>CF 620E</s>
 		<td>POJ 2187 
-		<td>UVa 10990 
+		<td><s>UVa 10990</s> 
 		<td>POJ 2987 
 		<td>POJ 3013 
 	<thead>
@@ -53,7 +54,7 @@
 		<th>6 
 		<td>SPOJ 375 
 		<td>POJ 3525 
-		<td>POJ 1811 
+		<td><s>POJ 1811</s> 
 		<td>POJ 2135 
 		<td>POJ 2296 
 	<thead>
