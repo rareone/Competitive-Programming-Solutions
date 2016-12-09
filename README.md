@@ -20,7 +20,7 @@
 		<td>POJ 3228 
 		<td><s>POJ 2780</s> 
 		<td>POJ 2480 
-		<td>POJ 1273 
+		<td><s>POJ 1273</s> 
 		<td>POJ 2728 
 	<thead>
 		<th>2 
