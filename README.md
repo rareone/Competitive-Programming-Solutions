@@ -28,7 +28,7 @@
 		<td>POJ 2420 
 		<td><s>UVa 11526</s> 
 		<td>POJ 2391 
-		<td>POJ 3259 
+		<td><s>POJ 3259</s>
 	<thead>
 		<th>3 
 		<td>POJ 1195 
