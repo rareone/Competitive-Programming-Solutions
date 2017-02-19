@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <utility>
+#include <cstring>//忘勒家西死吹母
 #define FL(i,j,k) for(int i=j;i<k;++i)
 #define eat(a) int a;scanf("%d",&a)
 
