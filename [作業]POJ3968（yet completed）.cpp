@@ -1,103 +1,78 @@
-// The code is yet completed
-// Including the algorithm of finding the intersection of two polygon in O(n) time
-// Although I can use half-plane intersection algorithm
-
-
 #include <iostream>
-#include <algorithm>
-#include <vector>
+#include <cmath>
 #include <complex>
-#define r real()
-#define i imag()
-#define PI 3.14159265358979363846251
-typedef std::complex<double> P;
-typedef std::vector<P> Poly;
-struct Line{
-    P p;// point
-    P l;//vector
-    Line(double x,double y,double p1,double p2):p(P(x,y)),l(P(p1,p2)){}
-    Line(P _p,P _l):p(_p),l(_l){};
-    Line(){}
-};
-typedef std::vector<Line> VL;
-int n;
-Poly prob;
+#include <algorithm>
+#define X real()
+#define Y imag()
+#define F first
+#define S second
+#define FL(i,j,k) for(int i=j;i<k;++i)
 
-double cross(P p1,P p2){
-    return p1.r*p2.i-p1.i*p2.r;
-}
-inline P intersectionpoint(Line L1,Line L2){
-    P s=L2.p-L1.p;
-    return L1.p+L1.l*cross(L2.l,s)/cross(L2.l,L1.l);
-}
+using namespace std;
+const int N=50005;
+const double eps=1e-8;
 
-inline VL IS(VL Li){
-    VL q;q.clear();
-    if(Li.size()==1){//INF half plane
-        Line LLL(Li[0].p+1e8*Li[0].l/abs(Li[0].l),P(0,1)*1e8*Li[0].l/abs(Li[0].l));
-        q.push_back(LLL);
-        LLL.p+=LLL.l,LLL.l=P(0,2)*LLL.l;
-        q.push_back(LLL);
-        LLL.p+=LLL.l,LLL.l=P(0,0.5)*LLL.l;
-        q.push_back(LLL);
-        LLL.p+=LLL.l,LLL.l=q[0].p-LLL.p;
-        q.push_back(LLL);
-        return q;
-    }
-    VL left=IS(VL(Li.begin(),Li.begin()+Li.size()/2));
-    VL right=IS(VL(Li.begin()+Li.size()/2+1,Li.end()));
-    if(left.size()==0||right.size()==0)return q;
-    
-    
-    
-    
-    //combine the two polygon
-    
-    
-    
-    
-    
-    return q;
+typedef complex<double> pt;
+typedef pair<pt, pt> seg;
+
+int n,polyn;
+pt P[N],resultPoly[N],deqP[N];
+seg HP[N],deqHP[N];
+
+int sign(double d){return d<-eps?-1:(d>eps);}
+inline double XS(pt a,pt b){return a.X*b.Y-a.Y*b.X;}//叉積
+inline pt Xection(seg a, seg b)//線段焦點
+{
+    double t=XS(a.S-a.F, b.S-b.F);
+    return XS(a.S-a.F,b.S-a.F)/t*b.F-XS(a.S-a.F,b.F-a.F)/t*b.S;
 }
-inline bool check(int siz){
-    std::vector<Line> L;
-    /*
-    L.push_back(Line(-1e9,1e9,0,-1e9));
-    L.push_back(Line(-1e9,-1e9,1e9,0));
-    L.push_back(Line(1e9,-1e9,0,1e9));
-    L.push_back(Line(1e9,1e9,-1e9,0));
-    */
-    for(int j=0;j<n;++j){
-        Line l;
-        l.p=prob[j];
-        l.l=prob[(j+siz)%n]-l.p;
-        L.push_back(l);
-    }
-    if(IS(L).empty())return true;
-    return false;
+double area(pt *poly,int n){
+    if(n<=2)return 0;
+    double sum=0;
+    FL(i, 2, n)sum+=XS(poly[i-1]-poly[0], poly[i]-poly[0]);
+    return fabs(sum);
 }
 
-int lgfind(int but,int top){
-    if(but==top)return but;
-    if(check((but+top)/2)){
-        return lgfind(but, (but+top)/2);
+void HPXection()//半平面，點數，output凸包，凸包點數
+{
+    //sort(HP, HP+n, [=](seg a,seg b){return arg(a.S-a.F)<arg(b.S-b.F);});
+    int l=0,r=0;
+    deqHP[r++]=HP[0];
+    deqHP[r++]=HP[1];
+    deqP[r-2]=Xection(deqHP[r-1], deqHP[r-2]);
+    FL(i,2,n){
+        while (r-l>=2 && sign(XS(HP[i].S-HP[i].F, deqP[r-2]-HP[i].F))<0) --r;
+        deqHP[r++]=HP[i];
+        deqP[r-2]=Xection(deqHP[r-1], deqHP[r-2]);
     }
-    else{
-        return lgfind((but+top)/2-1,top);
+    while(r-l>=2){
+        bool flag = 0;
+        if(sign(XS(deqHP[r-1].S-deqHP[r-1].F, deqP[l]-deqHP[r-1].F)) <= 0)flag = 1,l++;
+        if(sign(XS(deqHP[l  ].S-deqHP[l  ].F, deqP[r-2]-deqHP[l].F)) <= 0)flag = 1,r--;
+        if(!flag) break;
     }
+    deqP[r-1] = Xection(deqHP[l  ], deqHP[r-1]);
+    FL(i, l, r)resultPoly[i-l]=deqP[i];
+    polyn=r-l;
 }
+
+#define eat(n) int n;scanf("%d",&n);
 
 int main(){
     while(~scanf("%d",&n)){
-        int sx,sy;
-        prob.clear();
-        for(int k=0;k<n;++k){
-            scanf("%d%d",&sx,&sy);
-            prob.push_back(P(sx,sy));
+        FL(i, 0, n){
+            eat(x)eat(y)
+            P[i]=pt(x,y);
         }
-        if(n==3){
-            printf("1");continue;
+        if(n==3||n==4){puts("1");continue;}
+        int l=1,r=n-1,mid;
+        while (l<r-1) {
+            mid=(l+r)/2;
+            FL(i, 0, n) HP[i]=seg(P[(i+1+mid)%n],P[i]);
+            HPXection();
+            if(area(resultPoly,polyn)<eps)r=mid;
+            else l=mid;
         }
-        printf("%d",lgfind(1, n-3));
+        printf("%d\n",r);
     }
 }
