@@ -60,7 +60,7 @@
 	<thead>
 		<th>7 
 		<td>CF 342E 
-		<td>POJ 3968 
+		<td><s>POJ 3968</s> 
 		<td>NaN
 		<td>POJ 2195 
 		<td>CF 609E 
