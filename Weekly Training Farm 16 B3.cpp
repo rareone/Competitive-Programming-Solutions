@@ -81,4 +81,4 @@ int main(){
         cout<<(Ans[a]-B[a])/2<<'\n';
     }
 }
-http://codeforces.com/group/gRkn7bDfsN/contest/210418/problem/B3
+//http://codeforces.com/group/gRkn7bDfsN/contest/210418/problem/B3
