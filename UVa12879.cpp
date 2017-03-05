@@ -9,8 +9,15 @@ const int log=20;
 typedef long long LL;
 LL A[1<<log]={0,1,2,3,4,5,6,7},B[1<<log],w[1<<20]={1},tn;
 
-LL pow2[6]={128,1024,16384,131072,1048576,4194304},prime[6]={257,12289,65537,786433,7340033,104857601},a[6]={2,12,4,6,7,25},gen[6]={3,11,3,10,3,3},ks[6]={ 7 ,10 ,14 ,17 ,20 , 22};
-int selec(LL n){FL(i, 0, 5){if(pow2[i]>n+10)return i;}return 4;}
+const LL
+pow2[9]= {      128,     1024,    16384,   131072,   262144,   524288,  1048576,  4194304},
+prime[9]={      257,    12289,    65537,   786433,   786433,  5767169,  7340033,104857601},
+a[9]=    {        2,       12,        4,        6,        3,       11,        7,       25},
+gen[9]=  {        3,       11,        3,       10,       10,        3,        3,        3},
+ks[9]=   {        7,       10,       14,       17,       18,       19,       20,       22};
+
+size_t selec(LL n){return upper_bound(pow2,pow2+6,2*n+10)-pow2;}//N丟最大次項
+
 
 
 
@@ -64,7 +71,7 @@ int main(){
         FL(i, 0, n){scanf("%d",&a);++A[a];mx=max(mx, a);}
         scanf("%d",&m);
         FL(i, 0, m){scanf("%d",&a);++B[a];}
-        tn=selec(4*mx);
+        tn=selec(mx);
         NTT(A);
         FL(i, 0, pow2[tn])A[i]=A[i]*A[i]%prime[tn];
         NTT(A,ks[tn],true);
