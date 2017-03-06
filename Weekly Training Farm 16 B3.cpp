@@ -4,40 +4,6 @@ using namespace std;
 const int log=20;
 long long A[1<<log]={0},B[1<<log]={0};
 
-void XORtransform(long long *P, int k=log,bool inverse=0) {
-    for (int len = 1; 2 * len <= (1<<k); len <<= 1)
-        for (int i = 0; i < (1<<k); i += 2 * len)
-            for (int j = 0; j < len; ++j) {
-                long long u = P[i + j] , v = P[i + len + j];
-                P[i + j] = u + v , P[i + len + j] = u - v;
-            }
-    if (inverse) for (int i = 0; i < (1<<k); ++i) P[i] = P[i] / (1<<k);
-}
-
-void ANDtransform(long long *P, int k=log,bool inv=0) {
-    for (int len = 1; 2 * len <= (1<<k); len <<= 1)
-        for (int i = 0; i < (1<<k); i += 2 * len)
-            for (int j = 0; j < len; ++j) {
-                long long u = P[i + j] , v = P[i + len + j];
-                if (!inv) P[i + j] = v , P[i + len + j] = u + v;
-                else {
-                    P[i + j] = -u + v , P[i + len + j] = u;
-                }
-            }
-}
-
-void ORtransform(long long *P, int k=log,bool inv=0) {
-    for (int len = 1; 2 * len <= (1<<k); len <<= 1)
-        for (int i = 0; i < (1<<k); i += 2 * len)
-            for (int j = 0; j < len; ++j) {
-                long long u = P[i + j] , v = P[i + len + j];
-                if (!inv) P[i + j] = u , P[i + len + j] = u + v;
-                else {
-                    P[i + j] = u , P[i + len + j] = v - u;
-                }
-            }
-    
-}
 void findpdt(long long *P, int k=log,bool inv=0){
     for (int len = 1; 2 * len <= (1<<k); len <<= 1)
         for (int i = 0; i < (1<<k); i += 2 * len)
