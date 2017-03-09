@@ -57,7 +57,7 @@ int main(){
         REPP(i, 2, N+1){
             while(l<r && f(st[r-1].F.F,st[r-1].S)>=f(st[r-1].F.F,i-1))--r;
             if(l==r){
-                st[r++]=iii(ii(0,N+1),i-1);
+                st[r++]=iii(ii(i,N+1),i-1);
             }else{
                 int L=st[r-1].F.F,orgL=L,R=st[r-1].F.S,jt=st[r-1].S;
                 while (L<R-1) {
