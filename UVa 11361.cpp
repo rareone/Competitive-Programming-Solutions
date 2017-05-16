@@ -115,16 +115,14 @@ using namespace std;
 
 LL dp[20][100][100],A,B,K;
 
-LL pow10[20]={1};
+LL poW10[20]={1};
 LL Ans(LL d,LL r=0,LL t=0){//r: **...** length is d,digit sum is r,t:**...** length is d, is divisible by t
     if(d==0)return r==0&&t==0;
     if(dp[d][r][t]!=-1)return dp[d][r][t];
     LL ans=0;
     for(int i=0;i<10;++i){
-        ans+=Ans(d-1,(r+10*K-i)%K,((t-i*pow10[d-1])%K+K)%K);
+        ans+=Ans(d-1,(r+10*K-i)%K,((t-i*poW10[d-1])%K+K)%K);
     }
-    //printf("%lld %lld %lld",d,r,t);
-    //printf(" %lld\n",ans);
     return dp[d][r][t]=ans;
 }
 int digit[20],r=0;
@@ -135,8 +133,8 @@ LL Ask(LL a){
     for(;a;a/=10)digit[r++]=a%10;
     for(int l=r-1;l>=0;--l){
         for(int i=0;i<digit[l];++i){
-            ans+=Ans(l,((-predigit-i)%K+K)%K,((-pre-i*pow10[l])%K+K)%K);
-            pre+=1*pow10[l];
+            ans+=Ans(l,((-predigit-i)%K+K)%K,((-pre)%K+K)%K);
+            pre+=1*poW10[l];
         }
         predigit+=digit[l];
     }
@@ -144,10 +142,11 @@ LL Ask(LL a){
 }
 
 int main(){
-    for(int i=1;i<19;++i)pow10[i]=pow10[i-1]*10;
+    for(int i=1;i<19;++i)poW10[i]=poW10[i-1]*10;
     CASET{
         RIII(A,B,K);
-        printf("%lld\n",Ask(B+1)-Ask(A));
+        if(K>95)puts("0");
+        else printf("%lld\n",Ask(B+1)-Ask(A));
     }
     
 }
